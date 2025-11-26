@@ -1,29 +1,199 @@
+```xml
 <?xml version="1.0" encoding="UTF-8"?>
-<bpmn:definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL"
-  xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI"
-  xmlns:dc="http://www.omg.org/spec/DD/20100524/DC"
-  xmlns:di="http://www.omg.org/spec/DD/20100524/DI"
-  id="Definitions_1"
-  targetNamespace="http://bpmn.io/schema/bpmn">
-  <bpmn:process id="Process_1" isExecutable="false">
-    <bpmn:startEvent id="StartEvent_1" name="Start" />
-    <bpmn:endEvent id="EndEvent_1" name="Ende" />
-    <bpmn:sequenceFlow id="Flow_1" sourceRef="StartEvent_1" targetRef="EndEvent_1" />
+<bpmn:definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="Definitions_CampaignProcess" targetNamespace="http://bpmn.io/schema/bpmn">
+  <bpmn:collaboration id="Collaboration_1">
+    <bpmn:participant id="Participant_Marketing" name="Marketing Team" processRef="Process_CampaignPlanning" />
+  </bpmn:collaboration>
+  <bpmn:process id="Process_CampaignPlanning" name="Kampagnenplanung und -start" isExecutable="false">
+    <bpmn:documentation>Prozess zur Planung, Konzeption und dem Start einer neuen Marketingkampagne, von der Zielgruppendefinition bis zur Liveschaltung auf den ausgewählten Kanälen.</bpmn:documentation>
+    <bpmn:laneSet id="LaneSet_1">
+      <bpmn:lane id="Lane_MarketingTeam" name="Marketing Team">
+        <bpmn:flowNodeRef>StartEvent_PlanungBeginnt</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Task_1_Zielgruppe</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Task_2_Ziele</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Task_3_Botschaft</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Task_4_Kanaele</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Task_5_Assets</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Task_6_Influencer</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Task_7_Live</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>EndEvent_KampagneGelauncht</bpmn:flowNodeRef>
+      </bpmn:lane>
+    </bpmn:laneSet>
+    <bpmn:startEvent id="StartEvent_PlanungBeginnt" name="Planung beginnt" />
+    <bpmn:task id="Task_1_Zielgruppe" name="Zielgruppe identifizieren">
+      <bpmn:dataInputAssociation id="DataInputAssociation_Briefing">
+        <bpmn:sourceRef>DataObjectReference_Briefing</bpmn:sourceRef>
+        <bpmn:targetRef>Property_1f81n9p</bpmn:targetRef>
+      </bpmn:dataInputAssociation>
+      <bpmn:dataInputAssociation id="DataInputAssociation_Ziele">
+        <bpmn:sourceRef>DataObjectReference_Unternehmensziele</bpmn:sourceRef>
+        <bpmn:targetRef>Property_0l9m523</bpmn:targetRef>
+      </bpmn:dataInputAssociation>
+      <bpmn:dataInputAssociation id="DataInputAssociation_Budget">
+        <bpmn:sourceRef>DataObjectReference_Budget</bpmn:sourceRef>
+        <bpmn:targetRef>Property_0poyjxt</bpmn:targetRef>
+      </bpmn:dataInputAssociation>
+    </bpmn:task>
+    <bpmn:task id="Task_2_Ziele" name="Ziele und Kennzahlen definieren" />
+    <bpmn:task id="Task_3_Botschaft" name="Kernbotschaft, Tonalität und Claims entwickeln" />
+    <bpmn:task id="Task_4_Kanaele" name="Marketingkanäle auswählen" />
+    <bpmn:task id="Task_5_Assets" name="Kampagnen-Assets erstellen" />
+    <bpmn:task id="Task_6_Influencer" name="Influencer auswählen und Konditionen verhandeln" />
+    <bpmn:task id="Task_7_Live" name="Kampagne live schalten">
+      <bpmn:dataOutputAssociation id="DataOutputAssociation_Kampagne">
+        <bpmn:targetRef>DataObjectReference_Kampagne</bpmn:targetRef>
+      </bpmn:dataOutputAssociation>
+      <bpmn:dataOutputAssociation id="DataOutputAssociation_Mediaplan">
+        <bpmn:targetRef>DataObjectReference_Mediaplan</bpmn:targetRef>
+      </bpmn:dataOutputAssociation>
+    </bpmn:task>
+    <bpmn:endEvent id="EndEvent_KampagneGelauncht" name="Kampagne gelauncht" />
+    <bpmn:sequenceFlow id="Flow_1" sourceRef="StartEvent_PlanungBeginnt" targetRef="Task_1_Zielgruppe" />
+    <bpmn:sequenceFlow id="Flow_2" sourceRef="Task_1_Zielgruppe" targetRef="Task_2_Ziele" />
+    <bpmn:sequenceFlow id="Flow_3" sourceRef="Task_2_Ziele" targetRef="Task_3_Botschaft" />
+    <bpmn:sequenceFlow id="Flow_4" sourceRef="Task_3_Botschaft" targetRef="Task_4_Kanaele" />
+    <bpmn:sequenceFlow id="Flow_5" sourceRef="Task_4_Kanaele" targetRef="Task_5_Assets" />
+    <bpmn:sequenceFlow id="Flow_6" sourceRef="Task_5_Assets" targetRef="Task_6_Influencer" />
+    <bpmn:sequenceFlow id="Flow_7" sourceRef="Task_6_Influencer" targetRef="Task_7_Live" />
+    <bpmn:sequenceFlow id="Flow_8" sourceRef="Task_7_Live" targetRef="EndEvent_KampagneGelauncht" />
+    <bpmn:dataObject id="DataObject_Briefing" name="Marketing-Briefing" />
+    <bpmn:property id="Property_1f81n9p" name="__targetRef_placeholder" />
+    <bpmn:dataObjectReference id="DataObjectReference_Briefing" dataObjectRef="DataObject_Briefing" />
+    <bpmn:dataObject id="DataObject_Unternehmensziele" name="Unternehmensziele" />
+    <bpmn:property id="Property_0l9m523" name="__targetRef_placeholder" />
+    <bpmn:dataObjectReference id="DataObjectReference_Unternehmensziele" dataObjectRef="DataObject_Unternehmensziele" />
+    <bpmn:dataObject id="DataObject_Budget" name="Budgetvorgabe" />
+    <bpmn:property id="Property_0poyjxt" name="__targetRef_placeholder" />
+    <bpmn:dataObjectReference id="DataObjectReference_Budget" dataObjectRef="DataObject_Budget" />
+    <bpmn:dataObject id="DataObject_Kampagne" name="Gelaunchte Marketingkampagne" />
+    <bpmn:dataObjectReference id="DataObjectReference_Kampagne" dataObjectRef="DataObject_Kampagne" />
+    <bpmn:dataObject id="DataObject_Mediaplan" name="Finaler Mediaplan" />
+    <bpmn:dataObjectReference id="DataObjectReference_Mediaplan" dataObjectRef="DataObject_Mediaplan" />
   </bpmn:process>
-
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
-    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_1">
-      <bpmndi:BPMNShape id="StartEvent_1_di" bpmnElement="StartEvent_1">
-        <dc:Bounds x="173" y="102" width="36" height="36" />
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Collaboration_1">
+      <bpmndi:BPMNShape id="Participant_Marketing_di" bpmnElement="Participant_Marketing" isHorizontal="true">
+        <dc:Bounds x="160" y="80" width="1650" height="450" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="EndEvent_1_di" bpmnElement="EndEvent_1">
-        <dc:Bounds x="373" y="102" width="36" height="36" />
+      <bpmndi:BPMNShape id="Lane_MarketingTeam_di" bpmnElement="Lane_MarketingTeam" isHorizontal="true">
+        <dc:Bounds x="190" y="80" width="1620" height="450" />
       </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_8_di" bpmnElement="Flow_8">
+        <di:waypoint x="1660" y="305" />
+        <di:waypoint x="1722" y="305" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_7_di" bpmnElement="Flow_7">
+        <di:waypoint x="1450" y="305" />
+        <di:waypoint x="1510" y="305" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_6_di" bpmnElement="Flow_6">
+        <di:waypoint x="1240" y="305" />
+        <di:waypoint x="1300" y="305" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_5_di" bpmnElement="Flow_5">
+        <di:waypoint x="1030" y="305" />
+        <di:waypoint x="1090" y="305" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_4_di" bpmnElement="Flow_4">
+        <di:waypoint x="850" y="305" />
+        <di:waypoint x="910" y="305" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_3_di" bpmnElement="Flow_3">
+        <di:waypoint x="640" y="305" />
+        <di:waypoint x="700" y="305" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_2_di" bpmnElement="Flow_2">
+        <di:waypoint x="460" y="305" />
+        <di:waypoint x="520" y="305" />
+      </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_1_di" bpmnElement="Flow_1">
-        <di:waypoint x="209" y="120" />
-        <di:waypoint x="373" y="120" />
+        <di:waypoint x="298" y="305" />
+        <di:waypoint x="340" y="305" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="StartEvent_PlanungBeginnt_di" bpmnElement="StartEvent_PlanungBeginnt">
+        <dc:Bounds x="262" y="287" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="242" y="330" width="77" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Task_1_Zielgruppe_di" bpmnElement="Task_1_Zielgruppe">
+        <dc:Bounds x="340" y="265" width="120" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Task_2_Ziele_di" bpmnElement="Task_2_Ziele">
+        <dc:Bounds x="520" y="265" width="120" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Task_3_Botschaft_di" bpmnElement="Task_3_Botschaft">
+        <dc:Bounds x="700" y="265" width="150" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Task_4_Kanaele_di" bpmnElement="Task_4_Kanaele">
+        <dc:Bounds x="910" y="265" width="120" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Task_5_Assets_di" bpmnElement="Task_5_Assets">
+        <dc:Bounds x="1090" y="265" width="150" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Task_6_Influencer_di" bpmnElement="Task_6_Influencer">
+        <dc:Bounds x="1300" y="265" width="150" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Task_7_Live_di" bpmnElement="Task_7_Live">
+        <dc:Bounds x="1510" y="265" width="150" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="EndEvent_KampagneGelauncht_di" bpmnElement="EndEvent_KampagneGelauncht">
+        <dc:Bounds x="1722" y="287" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1695" y="330" width="90" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DataObjectReference_Briefing_di" bpmnElement="DataObjectReference_Briefing">
+        <dc:Bounds x="322" y="155" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="303" y="212" width="88" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DataObjectReference_Unternehmensziele_di" bpmnElement="DataObjectReference_Unternehmensziele">
+        <dc:Bounds x="382" y="155" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="360" y="212" width="94" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DataObjectReference_Budget_di" bpmnElement="DataObjectReference_Budget">
+        <dc:Bounds x="442" y="155" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="428" y="212" width="78" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DataObjectReference_Kampagne_di" bpmnElement="DataObjectReference_Kampagne">
+        <dc:Bounds x="1532" y="405" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1507" y="462" width="100" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="DataObjectReference_Mediaplan_di" bpmnElement="DataObjectReference_Mediaplan">
+        <dc:Bounds x="1592" y="405" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1576" y="462" width="82" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="DataInputAssociation_Briefing_di" bpmnElement="DataInputAssociation_Briefing">
+        <di:waypoint x="347" y="205" />
+        <di:waypoint x="370" y="265" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DataInputAssociation_Ziele_di" bpmnElement="DataInputAssociation_Ziele">
+        <di:waypoint x="407" y="205" />
+        <di:waypoint x="400" y="265" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DataInputAssociation_Budget_di" bpmnElement="DataInputAssociation_Budget">
+        <di:waypoint x="467" y="205" />
+        <di:waypoint x="430" y="265" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DataOutputAssociation_Kampagne_di" bpmnElement="DataOutputAssociation_Kampagne">
+        <di:waypoint x="1563" y="345" />
+        <di:waypoint x="1557" y="405" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="DataOutputAssociation_Mediaplan_di" bpmnElement="DataOutputAssociation_Mediaplan">
+        <di:waypoint x="1609" y="345" />
+        <di:waypoint x="1617" y="405" />
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
 </bpmn:definitions>
+```
