@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>BPMN Viewer</title>
+  <style>
+    html, body, #canvas {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+    }
+  </style>
+</head>
+<body>
+  <div id="canvas"></div>
+
+  <!-- bpmn.io Viewer mit Zoom/Pan -->
+  <script src="https://unpkg.com/bpmn-js/dist/bpmn-navigated-viewer.development.js"></script>
+
+  <script>
+    const viewer = new BpmnJS({ container: '#canvas' });
+
+    // lädt immer diagrams/latest.bpmn
+    fetch('diagrams/latest.bpmn')
+      .then(response => response.text())
+      .then(xml => viewer.importXML(xml))
+      .catch(err => console.error('Diagram loading error:', err));
+  </script>
+</body>
+</html>
