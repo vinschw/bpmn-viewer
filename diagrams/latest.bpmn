@@ -1,227 +1,204 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <bpmn:definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" id="Definitions_1" targetNamespace="http://bpmn.io/schema/bpmn">
-  <bpmn:process id="Process_1" name="Kampagnenplanung und Launch" isExecutable="false">
+  <bpmn:process id="Process_1" name="Google Ads Kampagnen-Erstellung" isExecutable="false">
     <bpmn:laneSet id="LaneSet_1">
-      <bpmn:lane id="Lane_Marketing" name="Marketing">
+      <bpmn:lane id="Lane_1" name="SEA Manager">
         <bpmn:flowNodeRef>START_1</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>TASK_1</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>TASK_2</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>TASK_3</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>TASK_4</bpmn:flowNodeRef>
-        <bpmn:flowNodeRef>GATEWAY_1</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>TASK_5</bpmn:flowNodeRef>
-        <bpmn:flowNodeRef>GATEWAY_2</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>TASK_6</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>TASK_7</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>TASK_8</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>TASK_9</bpmn:flowNodeRef>
-        <bpmn:flowNodeRef>GATEWAY_3</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>TASK_10</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>TASK_11</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>GATEWAY_1</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>TASK_12</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>TASK_13</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>END_1</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>END_2</bpmn:flowNodeRef>
       </bpmn:lane>
     </bpmn:laneSet>
-    <bpmn:startEvent id="START_1" name="Kampagnenplanung gestartet" />
-    <bpmn:userTask id="TASK_1" name="Zielgruppe identifizieren" />
-    <bpmn:userTask id="TASK_2" name="Ziele definieren" />
-    <bpmn:userTask id="TASK_3" name="Kernbotschaft entwickeln" />
-    <bpmn:userTask id="TASK_4" name="Kanäle auswählen" />
-    <bpmn:exclusiveGateway id="GATEWAY_1" name="Social Media Teil der Kampagne?" />
-    <bpmn:userTask id="TASK_5" name="Social Media Content erstellen" />
-    <bpmn:exclusiveGateway id="GATEWAY_2" name="Influencer einsetzen?" />
-    <bpmn:userTask id="TASK_6" name="Influencer auswählen" />
-    <bpmn:userTask id="TASK_7" name="Konditionen verhandeln" />
-    <bpmn:task id="TASK_8" name="Kampagne mit Social Media &amp; Influencern launchen" />
-    <bpmn:task id="TASK_9" name="Social Media Kampagne ohne Influencer launchen" />
-    <bpmn:exclusiveGateway id="GATEWAY_3" name="Reine Influencer-Kampagne?" />
-    <bpmn:userTask id="TASK_10" name="Influencer auswählen" />
-    <bpmn:userTask id="TASK_11" name="Konditionen verhandeln" />
-    <bpmn:task id="TASK_12" name="Reine Influencer-Kampagne launchen" />
-    <bpmn:task id="TASK_13" name="Andere Marketing-Kampagnen launchen" />
-    <bpmn:endEvent id="END_1" name="Kampagne gelauncht" />
+    <bpmn:startEvent id="START_1" name="Kampagnen-Erstellung beauftragt" />
+    <bpmn:userTask id="TASK_1" name="Ins Google Ads Konto einloggen" />
+    <bpmn:userTask id="TASK_2" name="Neue Kampagne anlegen" />
+    <bpmn:userTask id="TASK_3" name="Kampagnenziel auswählen oder überspringen" />
+    <bpmn:userTask id="TASK_4" name="Kampagnentyp auswählen" />
+    <bpmn:userTask id="TASK_5" name="Budget festlegen" />
+    <bpmn:userTask id="TASK_6" name="Gebotsstrategie einstellen" />
+    <bpmn:userTask id="TASK_7" name="Targeting konfigurieren" />
+    <bpmn:userTask id="TASK_8" name="Anzeigengruppen erstellen und Keywords hinzufügen" />
+    <bpmn:userTask id="TASK_9" name="Anzeigen erstellen" />
+    <bpmn:userTask id="TASK_10" name="Finale Einstellungen vornehmen" />
+    <bpmn:userTask id="TASK_11" name="Gesamte Kampagne prüfen" />
+    <bpmn:exclusiveGateway id="GATEWAY_1" name="Kundenfreigabe erforderlich?" />
+    <bpmn:userTask id="TASK_12" name="Kampagne als Entwurf speichern und Zusammenfassung senden" />
+    <bpmn:userTask id="TASK_13" name="Kampagne speichern und freischalten" />
+    <bpmn:endEvent id="END_1" name="Kampagne zur Freigabe übermittelt" />
+    <bpmn:endEvent id="END_2" name="Kampagne veröffentlicht" />
     <bpmn:sequenceFlow id="Flow_1" sourceRef="START_1" targetRef="TASK_1" />
     <bpmn:sequenceFlow id="Flow_2" sourceRef="TASK_1" targetRef="TASK_2" />
     <bpmn:sequenceFlow id="Flow_3" sourceRef="TASK_2" targetRef="TASK_3" />
     <bpmn:sequenceFlow id="Flow_4" sourceRef="TASK_3" targetRef="TASK_4" />
-    <bpmn:sequenceFlow id="Flow_5" sourceRef="TASK_4" targetRef="GATEWAY_1" />
-    <bpmn:sequenceFlow id="Flow_6" name="ja" sourceRef="GATEWAY_1" targetRef="TASK_5">
+    <bpmn:sequenceFlow id="Flow_5" sourceRef="TASK_4" targetRef="TASK_5" />
+    <bpmn:sequenceFlow id="Flow_6" sourceRef="TASK_5" targetRef="TASK_6" />
+    <bpmn:sequenceFlow id="Flow_7" sourceRef="TASK_6" targetRef="TASK_7" />
+    <bpmn:sequenceFlow id="Flow_8" sourceRef="TASK_7" targetRef="TASK_8" />
+    <bpmn:sequenceFlow id="Flow_9" sourceRef="TASK_8" targetRef="TASK_9" />
+    <bpmn:sequenceFlow id="Flow_10" sourceRef="TASK_9" targetRef="TASK_10" />
+    <bpmn:sequenceFlow id="Flow_11" sourceRef="TASK_10" targetRef="TASK_11" />
+    <bpmn:sequenceFlow id="Flow_12" sourceRef="TASK_11" targetRef="GATEWAY_1" />
+    <bpmn:sequenceFlow id="Flow_13" name="ja" sourceRef="GATEWAY_1" targetRef="TASK_12">
       <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">ja</bpmn:conditionExpression>
     </bpmn:sequenceFlow>
-    <bpmn:sequenceFlow id="Flow_7" sourceRef="TASK_5" targetRef="GATEWAY_2" />
-    <bpmn:sequenceFlow id="Flow_8" name="ja" sourceRef="GATEWAY_2" targetRef="TASK_6">
-      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">ja</bpmn:conditionExpression>
-    </bpmn:sequenceFlow>
-    <bpmn:sequenceFlow id="Flow_9" sourceRef="TASK_6" targetRef="TASK_7" />
-    <bpmn:sequenceFlow id="Flow_10" sourceRef="TASK_7" targetRef="TASK_8" />
-    <bpmn:sequenceFlow id="Flow_11" sourceRef="TASK_8" targetRef="END_1" />
-    <bpmn:sequenceFlow id="Flow_12" name="nein" sourceRef="GATEWAY_2" targetRef="TASK_9">
+    <bpmn:sequenceFlow id="Flow_14" name="nein" sourceRef="GATEWAY_1" targetRef="TASK_13">
       <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">nein</bpmn:conditionExpression>
     </bpmn:sequenceFlow>
-    <bpmn:sequenceFlow id="Flow_13" sourceRef="TASK_9" targetRef="END_1" />
-    <bpmn:sequenceFlow id="Flow_14" name="nein" sourceRef="GATEWAY_1" targetRef="GATEWAY_3">
-      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">nein</bpmn:conditionExpression>
-    </bpmn:sequenceFlow>
-    <bpmn:sequenceFlow id="Flow_15" name="ja" sourceRef="GATEWAY_3" targetRef="TASK_10">
-      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">ja</bpmn:conditionExpression>
-    </bpmn:sequenceFlow>
-    <bpmn:sequenceFlow id="Flow_16" sourceRef="TASK_10" targetRef="TASK_11" />
-    <bpmn:sequenceFlow id="Flow_17" sourceRef="TASK_11" targetRef="TASK_12" />
-    <bpmn:sequenceFlow id="Flow_18" sourceRef="TASK_12" targetRef="END_1" />
-    <bpmn:sequenceFlow id="Flow_19" name="nein" sourceRef="GATEWAY_3" targetRef="TASK_13">
-      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">nein</bpmn:conditionExpression>
-    </bpmn:sequenceFlow>
-    <bpmn:sequenceFlow id="Flow_20" sourceRef="TASK_13" targetRef="END_1" />
+    <bpmn:sequenceFlow id="Flow_15" sourceRef="TASK_12" targetRef="END_1" />
+    <bpmn:sequenceFlow id="Flow_16" sourceRef="TASK_13" targetRef="END_2" />
   </bpmn:process>
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_1">
-      <bpmndi:BPMNShape id="Shape_Lane_Marketing" bpmnElement="Lane_Marketing" isHorizontal="true">
-        <dc:Bounds x="120" y="80" width="1660" height="450" />
+      <bpmndi:BPMNShape id="Lane_1_di" bpmnElement="Lane_1" isHorizontal="true">
+        <dc:Bounds x="130" y="50" width="2200" height="300" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Shape_START_1" bpmnElement="START_1">
-        <dc:Bounds x="172" y="282" width="36" height="36" />
+      <bpmndi:BPMNShape id="START_1_di" bpmnElement="START_1">
+        <dc:Bounds x="182" y="182" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="157" y="225" width="87" height="40" />
+        </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Shape_TASK_1" bpmnElement="TASK_1">
-        <dc:Bounds x="260" y="260" width="100" height="80" />
+      <bpmndi:BPMNShape id="TASK_1_di" bpmnElement="TASK_1">
+        <dc:Bounds x="270" y="160" width="100" height="80" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Shape_TASK_2" bpmnElement="TASK_2">
-        <dc:Bounds x="410" y="260" width="100" height="80" />
+      <bpmndi:BPMNShape id="TASK_2_di" bpmnElement="TASK_2">
+        <dc:Bounds x="420" y="160" width="100" height="80" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Shape_TASK_3" bpmnElement="TASK_3">
-        <dc:Bounds x="560" y="260" width="100" height="80" />
+      <bpmndi:BPMNShape id="TASK_3_di" bpmnElement="TASK_3">
+        <dc:Bounds x="570" y="160" width="100" height="80" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Shape_TASK_4" bpmnElement="TASK_4">
-        <dc:Bounds x="710" y="260" width="100" height="80" />
+      <bpmndi:BPMNShape id="TASK_4_di" bpmnElement="TASK_4">
+        <dc:Bounds x="720" y="160" width="100" height="80" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Shape_GATEWAY_1" bpmnElement="GATEWAY_1" isMarkerVisible="true">
-        <dc:Bounds x="865" y="275" width="50" height="50" />
+      <bpmndi:BPMNShape id="TASK_5_di" bpmnElement="TASK_5">
+        <dc:Bounds x="870" y="160" width="100" height="80" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Shape_TASK_5" bpmnElement="TASK_5">
-        <dc:Bounds x="970" y="150" width="100" height="80" />
+      <bpmndi:BPMNShape id="TASK_6_di" bpmnElement="TASK_6">
+        <dc:Bounds x="1020" y="160" width="100" height="80" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Shape_GATEWAY_2" bpmnElement="GATEWAY_2" isMarkerVisible="true">
-        <dc:Bounds x="1125" y="165" width="50" height="50" />
+      <bpmndi:BPMNShape id="TASK_7_di" bpmnElement="TASK_7">
+        <dc:Bounds x="1170" y="160" width="100" height="80" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Shape_TASK_6" bpmnElement="TASK_6">
-        <dc:Bounds x="1230" y="100" width="100" height="80" />
+      <bpmndi:BPMNShape id="TASK_8_di" bpmnElement="TASK_8">
+        <dc:Bounds x="1320" y="160" width="100" height="80" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Shape_TASK_7" bpmnElement="TASK_7">
-        <dc:Bounds x="1380" y="100" width="100" height="80" />
+      <bpmndi:BPMNShape id="TASK_9_di" bpmnElement="TASK_9">
+        <dc:Bounds x="1470" y="160" width="100" height="80" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Shape_TASK_8" bpmnElement="TASK_8">
-        <dc:Bounds x="1530" y="100" width="100" height="80" />
+      <bpmndi:BPMNShape id="TASK_10_di" bpmnElement="TASK_10">
+        <dc:Bounds x="1620" y="160" width="100" height="80" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Shape_TASK_9" bpmnElement="TASK_9">
-        <dc:Bounds x="1230" y="220" width="100" height="80" />
+      <bpmndi:BPMNShape id="TASK_11_di" bpmnElement="TASK_11">
+        <dc:Bounds x="1770" y="160" width="100" height="80" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Shape_GATEWAY_3" bpmnElement="GATEWAY_3" isMarkerVisible="true">
-        <dc:Bounds x="995" y="375" width="50" height="50" />
+      <bpmndi:BPMNShape id="GATEWAY_1_di" bpmnElement="GATEWAY_1" isMarkerVisible="true">
+        <dc:Bounds x="1925" y="175" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1909" y="125" width="82" height="40" />
+        </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Shape_TASK_10" bpmnElement="TASK_10">
-        <dc:Bounds x="1100" y="300" width="100" height="80" />
+      <bpmndi:BPMNShape id="TASK_12_di" bpmnElement="TASK_12">
+        <dc:Bounds x="2030" y="80" width="100" height="80" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Shape_TASK_11" bpmnElement="TASK_11">
-        <dc:Bounds x="1250" y="300" width="100" height="80" />
+      <bpmndi:BPMNShape id="TASK_13_di" bpmnElement="TASK_13">
+        <dc:Bounds x="2030" y="240" width="100" height="80" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Shape_TASK_12" bpmnElement="TASK_12">
-        <dc:Bounds x="1400" y="300" width="100" height="80" />
+      <bpmndi:BPMNShape id="END_1_di" bpmnElement="END_1">
+        <dc:Bounds x="2182" y="102" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="2156" y="145" width="89" height="40" />
+        </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Shape_TASK_13" bpmnElement="TASK_13">
-        <dc:Bounds x="1100" y="420" width="100" height="80" />
+      <bpmndi:BPMNShape id="END_2_di" bpmnElement="END_2">
+        <dc:Bounds x="2182" y="262" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="2168" y="305" width="65" height="27" />
+        </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Shape_END_1" bpmnElement="END_1">
-        <dc:Bounds x="1702" y="282" width="36" height="36" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNEdge id="Edge_Flow_1" bpmnElement="Flow_1">
-        <di:waypoint x="208" y="300" />
-        <di:waypoint x="260" y="300" />
+      <bpmndi:BPMNEdge id="Flow_1_di" bpmnElement="Flow_1">
+        <di:waypoint x="218" y="200" />
+        <di:waypoint x="270" y="200" />
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Edge_Flow_2" bpmnElement="Flow_2">
-        <di:waypoint x="360" y="300" />
-        <di:waypoint x="410" y="300" />
+      <bpmndi:BPMNEdge id="Flow_2_di" bpmnElement="Flow_2">
+        <di:waypoint x="370" y="200" />
+        <di:waypoint x="420" y="200" />
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Edge_Flow_3" bpmnElement="Flow_3">
-        <di:waypoint x="510" y="300" />
-        <di:waypoint x="560" y="300" />
+      <bpmndi:BPMNEdge id="Flow_3_di" bpmnElement="Flow_3">
+        <di:waypoint x="520" y="200" />
+        <di:waypoint x="570" y="200" />
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Edge_Flow_4" bpmnElement="Flow_4">
-        <di:waypoint x="660" y="300" />
-        <di:waypoint x="710" y="300" />
+      <bpmndi:BPMNEdge id="Flow_4_di" bpmnElement="Flow_4">
+        <di:waypoint x="670" y="200" />
+        <di:waypoint x="720" y="200" />
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Edge_Flow_5" bpmnElement="Flow_5">
-        <di:waypoint x="810" y="300" />
-        <di:waypoint x="865" y="300" />
+      <bpmndi:BPMNEdge id="Flow_5_di" bpmnElement="Flow_5">
+        <di:waypoint x="820" y="200" />
+        <di:waypoint x="870" y="200" />
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Edge_Flow_6" bpmnElement="Flow_6">
-        <di:waypoint x="890" y="275" />
-        <di:waypoint x="890" y="190" />
-        <di:waypoint x="970" y="190" />
+      <bpmndi:BPMNEdge id="Flow_6_di" bpmnElement="Flow_6">
+        <di:waypoint x="970" y="200" />
+        <di:waypoint x="1020" y="200" />
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Edge_Flow_7" bpmnElement="Flow_7">
-        <di:waypoint x="1070" y="190" />
-        <di:waypoint x="1125" y="190" />
+      <bpmndi:BPMNEdge id="Flow_7_di" bpmnElement="Flow_7">
+        <di:waypoint x="1120" y="200" />
+        <di:waypoint x="1170" y="200" />
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Edge_Flow_8" bpmnElement="Flow_8">
-        <di:waypoint x="1150" y="165" />
-        <di:waypoint x="1150" y="140" />
-        <di:waypoint x="1230" y="140" />
+      <bpmndi:BPMNEdge id="Flow_8_di" bpmnElement="Flow_8">
+        <di:waypoint x="1270" y="200" />
+        <di:waypoint x="1320" y="200" />
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Edge_Flow_9" bpmnElement="Flow_9">
-        <di:waypoint x="1330" y="140" />
-        <di:waypoint x="1380" y="140" />
+      <bpmndi:BPMNEdge id="Flow_9_di" bpmnElement="Flow_9">
+        <di:waypoint x="1420" y="200" />
+        <di:waypoint x="1470" y="200" />
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Edge_Flow_10" bpmnElement="Flow_10">
-        <di:waypoint x="1480" y="140" />
-        <di:waypoint x="1530" y="140" />
+      <bpmndi:BPMNEdge id="Flow_10_di" bpmnElement="Flow_10">
+        <di:waypoint x="1570" y="200" />
+        <di:waypoint x="1620" y="200" />
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Edge_Flow_11" bpmnElement="Flow_11">
-        <di:waypoint x="1630" y="140" />
-        <di:waypoint x="1720" y="140" />
-        <di:waypoint x="1720" y="282" />
+      <bpmndi:BPMNEdge id="Flow_11_di" bpmnElement="Flow_11">
+        <di:waypoint x="1720" y="200" />
+        <di:waypoint x="1770" y="200" />
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Edge_Flow_12" bpmnElement="Flow_12">
-        <di:waypoint x="1150" y="215" />
-        <di:waypoint x="1150" y="260" />
-        <di:waypoint x="1230" y="260" />
+      <bpmndi:BPMNEdge id="Flow_12_di" bpmnElement="Flow_12">
+        <di:waypoint x="1870" y="200" />
+        <di:waypoint x="1925" y="200" />
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Edge_Flow_13" bpmnElement="Flow_13">
-        <di:waypoint x="1330" y="260" />
-        <di:waypoint x="1720" y="260" />
-        <di:waypoint x="1720" y="282" />
+      <bpmndi:BPMNEdge id="Flow_13_di" bpmnElement="Flow_13">
+        <di:waypoint x="1950" y="175" />
+        <di:waypoint x="1950" y="120" />
+        <di:waypoint x="2030" y="120" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1958" y="103" width="13" height="14" />
+        </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Edge_Flow_14" bpmnElement="Flow_14">
-        <di:waypoint x="890" y="325" />
-        <di:waypoint x="890" y="400" />
-        <di:waypoint x="995" y="400" />
+      <bpmndi:BPMNEdge id="Flow_14_di" bpmnElement="Flow_14">
+        <di:waypoint x="1950" y="225" />
+        <di:waypoint x="1950" y="280" />
+        <di:waypoint x="2030" y="280" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1954" y="283" width="22" height="14" />
+        </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Edge_Flow_15" bpmnElement="Flow_15">
-        <di:waypoint x="1020" y="375" />
-        <di:waypoint x="1020" y="340" />
-        <di:waypoint x="1100" y="340" />
+      <bpmndi:BPMNEdge id="Flow_15_di" bpmnElement="Flow_15">
+        <di:waypoint x="2130" y="120" />
+        <di:waypoint x="2182" y="120" />
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Edge_Flow_16" bpmnElement="Flow_16">
-        <di:waypoint x="1200" y="340" />
-        <di:waypoint x="1250" y="340" />
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Edge_Flow_17" bpmnElement="Flow_17">
-        <di:waypoint x="1350" y="340" />
-        <di:waypoint x="1400" y="340" />
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Edge_Flow_18" bpmnElement="Flow_18">
-        <di:waypoint x="1500" y="340" />
-        <di:waypoint x="1720" y="340" />
-        <di:waypoint x="1720" y="318" />
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Edge_Flow_19" bpmnElement="Flow_19">
-        <di:waypoint x="1020" y="425" />
-        <di:waypoint x="1020" y="460" />
-        <di:waypoint x="1100" y="460" />
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Edge_Flow_20" bpmnElement="Flow_20">
-        <di:waypoint x="1200" y="460" />
-        <di:waypoint x="1720" y="460" />
-        <di:waypoint x="1720" y="318" />
+      <bpmndi:BPMNEdge id="Flow_16_di" bpmnElement="Flow_16">
+        <di:waypoint x="2130" y="280" />
+        <di:waypoint x="2182" y="280" />
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
